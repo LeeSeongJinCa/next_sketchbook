@@ -1,6 +1,28 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Link from "next/link";
+import Image from "next/image";
 
-export default function Home() {
+import utilStyles from "../styles/utils.module.css";
+import Date from "../components/date";
+import Layout from "../components/layout";
+import { getSortedPostsData } from "../lib/posts";
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+// export const getServerSideProps = (context) => {
+//   return {
+//     props: {},
+//   };
+// };
+
+export default function Home({ allPostsData }) {
   return (
     <div className="container">
       <Head>
@@ -10,8 +32,13 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Read{" "}
+          <Link href="/posts/first-post">
+            <a>this page!</a>
+          </Link>
         </h1>
+
+        <Image src="/images/timetable.png" width={100} height={100} />
 
         <p className="description">
           Get started by editing <code>pages/index.js</code>
@@ -54,10 +81,29 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
+
+      <Layout home>
+        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+          <h2 className={utilStyles.headingLg}>Blog</h2>
+          <ul className={utilStyles.list}>
+            {allPostsData.map(({ id, date, title }) => (
+              <li className={utilStyles.listItem} key={id}>
+                <Link href={`/posts/${id}`}>
+                  <a>{title}</a>
+                </Link>
+                <br />
+                <small className={utilStyles.lightText}>
+                  <Date dateString={date} />
+                </small>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </Layout>
 
       <style jsx>{`
         .container {
@@ -205,5 +251,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }
