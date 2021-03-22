@@ -1,0 +1,14 @@
+.container {
+  border: 2px solid black;
+
+  > .main {
+    border: 2px solid blue;
+    > .h1 {
+      border: 1px solid black;
+    }
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
