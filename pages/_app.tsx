@@ -1,5 +1,6 @@
+import { NextComponentType } from "next";
 import Router from "next/router";
-import type { AppProps } from "next/app";
+import type { AppContext, AppInitialProps, AppProps } from "next/app";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
