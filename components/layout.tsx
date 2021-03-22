@@ -29,17 +29,7 @@ const Layout = ({ children, home }) => {
       </Head>
       <header className={styles.header}>
         {home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1 className={utilStyles.heading2Xl}>{name}</h1>
-          </>
+          <h1 className={utilStyles.heading2Xl}>{name}</h1>
         ) : (
           <>
             <Link href="/">
