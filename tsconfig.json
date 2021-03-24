@@ -55,7 +55,7 @@
       "@utils/*": ["./utils/*"],
       "@pages/*": ["./pages/*"]
     },
-    "types": ["@emotion/react/types/css-prop"]
+    "types": ["@emotion/react/types/css-prop", "google.maps"]
   },
   "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
