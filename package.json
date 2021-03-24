@@ -9,17 +9,19 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@react-google-maps/api": "^2.1.1",
     "@emotion/babel-plugin": "^11.2.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
+    "@react-google-maps/api": "^2.1.1",
     "next": "latest",
+    "next-images": "^1.7.0",
     "nprogress": "^0.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.10",
+    "@types/google.maps": "^3.44.2",
     "@types/node": "^14.14.31",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.2",
