@@ -3,6 +3,8 @@ const withImages = require("next-images");
 module.exports = {};
 
 module.exports = withImages({
+  basePath: "/next_sketchbook",
+  assetPrefix: "/next_sketchbook",
   exportPathMap: async function () {
     return {
       "/": { page: "/" },

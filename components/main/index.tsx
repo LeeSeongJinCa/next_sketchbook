@@ -4,6 +4,8 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 import thrashCan from "@assets/main/trashCan.svg";
 
+const prefix = "/next_sketchbook";
+
 const containerStyle = {
   width: "100vw",
   height: "100vh",
@@ -53,7 +55,7 @@ const Main: NextPage<Props> = ({ apiKey }) => {
 
   const displayMarkers = useMemo(() => {
     return markers.map(([lat, lng], i) => (
-      <Marker key={i} position={{ lat, lng }} icon={thrashCan} />
+      <Marker key={i} position={{ lat, lng }} icon={prefix + thrashCan} />
     ));
   }, [markers]);
 
