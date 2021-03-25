@@ -24,7 +24,10 @@ jobs:
       - run: npm run build
         env:
           GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
+          BASE_URL: ${{ secrets.BASE_URL }}
       - run: npm run export
+          GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
+          BASE_URL: ${{ secrets.BASE_URL }}
       - run: touch ./out/.nojekyll
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0

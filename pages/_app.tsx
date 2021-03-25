@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import Router from "next/router";
-
+import Head from "next/head";
 import NProgress from "nprogress";
 
 import { css, Global } from "@emotion/react";
@@ -13,6 +13,13 @@ Router.events.on("routeChangeError", () => NProgress.done());
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <title>Google Map Search</title>
+      </Head>
       <Global
         styles={css`
           * {

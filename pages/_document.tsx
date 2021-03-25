@@ -7,11 +7,6 @@ class MyDocument extends Document {
       <Html lang="ko">
         <Head>
           <link rel="shortcut icon" href={`${prefix}/favicon.ico`} />
-          <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-          />
-          <title>Google Map Search</title>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         </Head>
