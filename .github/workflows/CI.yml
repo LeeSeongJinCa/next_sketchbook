@@ -25,6 +25,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm run build
+        env:
+          GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
       - run: npm run export
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
