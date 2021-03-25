@@ -1,10 +1,8 @@
 const withImages = require("next-images");
 
-module.exports = {};
-
 module.exports = withImages({
-  basePath: "/next_sketchbook",
-  assetPrefix: "/next_sketchbook",
+  basePath: process.env.BASE_URL || "",
+  assetPrefix: process.env.BASE_URL || "",
   exportPathMap: async function () {
     return {
       "/": { page: "/" },
@@ -13,7 +11,7 @@ module.exports = withImages({
       "/rank": { page: "/rank" },
     };
   },
-  webpack(config, options) {
+  webpack(config) {
     return config;
   },
 });

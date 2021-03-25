@@ -1,6 +1,5 @@
 import type { AppProps } from "next/app";
 import Router from "next/router";
-import Head from "next/head";
 
 import NProgress from "nprogress";
 
@@ -14,13 +13,6 @@ Router.events.on("routeChangeError", () => NProgress.done());
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <Head>
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
-        />
-      </Head>
       <Global
         styles={css`
           * {
