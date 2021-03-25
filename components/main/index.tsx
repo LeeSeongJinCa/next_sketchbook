@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { NextPage } from "next";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
-import thrash_can from "@assets/main/trash_can.svg";
+import thrashCan from "@assets/main/trashCan.svg";
 
 const containerStyle = {
   width: "100vw",
@@ -53,7 +53,7 @@ const Main: NextPage<Props> = ({ apiKey }) => {
 
   const displayMarkers = useMemo(() => {
     return markers.map(([lat, lng], i) => (
-      <Marker key={i} position={{ lat, lng }} icon={thrash_can} />
+      <Marker key={i} position={{ lat, lng }} icon={thrashCan} />
     ));
   }, [markers]);
 
