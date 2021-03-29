@@ -21,7 +21,7 @@ const Rank: NextPage<Props> = ({}) => {
     return rankData
       .sort((a, b) => (a.amount < b.amount ? 1 : -1))
       .map(({ region, amount }, i) => (
-        <tr>
+        <tr key={i}>
           <td>{i + 1}</td>
           <td>{region}</td>
           <td>{amount}</td>
@@ -37,7 +37,7 @@ const Rank: NextPage<Props> = ({}) => {
           <tr>
             <th>순위</th>
             <th>지역 이름</th>
-            <th>쓰레기 순위</th>
+            <th>쓰레기 개수</th>
           </tr>
         </thead>
         <tbody>{displayRankData}</tbody>
