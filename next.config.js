@@ -6,7 +6,6 @@ module.exports = withImages({
   exportPathMap: async function () {
     return {
       "/": { page: "/" },
-      "/main": { page: "/main" },
       "/statistics": { page: "/statistics" },
       "/rank": { page: "/rank" },
     };
