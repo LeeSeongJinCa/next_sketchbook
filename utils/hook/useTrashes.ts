@@ -5,13 +5,13 @@ import { fetchTrashes } from "@utils/api/main";
 import { ResTrash } from "@utils/payloads/response";
 import {
   SET_TRASHES,
-  useTrashDispatch,
-  useTrashState,
-} from "@utils/contextAPI/trashes";
+  useMainDispatch,
+  useMainState,
+} from "@utils/contextAPI/main";
 
 const useTrashes = (id: string, password: string) => {
-  const dispatch = useTrashDispatch();
-  const { trashes } = useTrashState();
+  const dispatch = useMainDispatch();
+  const { trashes } = useMainState();
 
   const setTrashes = useCallback((payload: ResTrash[]) => {
     dispatch({ type: SET_TRASHES, payload });
