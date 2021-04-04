@@ -55,6 +55,7 @@ const NavigationBar: NextPage<Props> = ({}) => {
                   alt={name}
                   title={name}
                 />
+                <span>{name}</span>
               </a>
             </Link>
           );

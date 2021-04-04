@@ -14,12 +14,15 @@ export const NavigationBarWrap = styled.nav`
     display: flex;
     align-items: center;
     justify-content: center;
+    -moz-flex-direction: column;
+    flex-direction: column;
     height: 100%;
     flex: 1 0 33%;
     text-align: center;
-    font-weight: bold;
+    font-size: 12px;
     &.current {
       background-color: rgba(55, 53, 47, 0.08);
+      color: #2e6dff;
     }
     &:hover {
       background-color: rgba(55, 53, 47, 0.08);
