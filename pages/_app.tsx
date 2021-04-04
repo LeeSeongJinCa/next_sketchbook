@@ -4,9 +4,10 @@ import Head from "next/head";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
-import { css, Global } from "@emotion/react";
-
 import MobileLayout from "layouts/MobileLayout";
+
+import { css, Global } from "@emotion/react";
+import { MainProvider } from "@utils/contextAPI/main";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -23,9 +24,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Google Map Search</title>
       </Head>
       <Global styles={globalStyle} />
-      <MobileLayout>
-        <Component {...pageProps} />
-      </MobileLayout>
+      <MainProvider>
+        <MobileLayout>
+          <Component {...pageProps} />
+        </MobileLayout>
+      </MainProvider>
     </>
   );
 };
