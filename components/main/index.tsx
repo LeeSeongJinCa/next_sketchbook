@@ -29,7 +29,7 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
     onClickGetLocation,
   ] = useGoogleMap(apiKey);
 
-  const [trashCans, trashes] = useMain(id, password);
+  const [trashes, trashCans] = useMain(id, password);
 
   const initAccessToken = useCallback(async () => {
     try {

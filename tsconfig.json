@@ -1,34 +1,3 @@
-// {
-//   "compilerOptions": {
-//     "target": "esnext",
-//     "lib": ["dom", "dom.iterable", "esnext", "es2017"],
-//     "allowJs": true,
-//     "skipLibCheck": true,
-//     "strict": true,
-//     "forceConsistentCasingInFileNames": true,
-//     "noEmit": true,
-//     "esModuleInterop": true,
-//     "module": "esnext",
-//     "moduleResolution": "node",
-//     "resolveJsonModule": true,
-//     "isolatedModules": true,
-//     "jsx": "preserve",
-//     "alwaysStrict": true,
-//     "noFallthroughCasesInSwitch": true,
-//     "noUnusedLocals": true,
-//     "noUnusedParameters": true,
-//     "baseUrl": "./",
-//     "paths": {
-//       "@components/*": ["./components/*"],
-//       "@assets/*": ["./assets/*"],
-//       "@utils/*": ["./utils/*"]
-//     },
-//     "types": ["@emotion/react/types/css-prop"]
-//   },
-//   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-//   "exclude": ["node_modules"]
-// }
-
 {
   "compilerOptions": {
     "allowJs": true,
@@ -58,5 +27,5 @@
     "types": ["@emotion/react/types/css-prop", "google.maps"]
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
