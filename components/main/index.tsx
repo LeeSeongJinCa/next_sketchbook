@@ -1,8 +1,8 @@
 import { NextPage } from "next";
-import React, { useEffect, useMemo, useCallback } from "react";
+import React, { useEffect, useMemo, useCallback, useRef } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 
-import thrashCan from "@assets/main/trashCan.svg";
+import { trashCanSvg, paperWasteSvg } from "@assets/index";
 import { fetchLogin } from "@utils/api/login";
 import useMain from "@utils/hook/useMain";
 import useGoogleMap from "@utils/hook/useGoogleMap";
@@ -28,8 +28,12 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
     onChangeMapCenter,
     onClickGetLocation,
   ] = useGoogleMap(apiKey);
-
   const [trashes, trashCans] = useMain(id, password);
+  const scaledSize = useRef<google.maps.Size>({
+    width: 30,
+    height: 30,
+    equals: () => true,
+  });
 
   const initAccessToken = useCallback(async () => {
     try {
@@ -41,13 +45,27 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
 
   const displayTrashes = useMemo(() => {
     return trashes.map(({ latitude: lat, longitude: lng }, i) => (
-      <Marker key={i} position={{ lat: lat, lng: lng }} icon={thrashCan} />
+      <Marker
+        key={i}
+        position={{ lat, lng }}
+        icon={{
+          url: paperWasteSvg,
+          scaledSize: scaledSize.current,
+        }}
+      />
     ));
   }, [trashes]);
 
   const displayTrashCans = useMemo(() => {
     return trashCans.map(({ latitude: lat, longitude: lng }, i) => (
-      <Marker key={i} position={{ lat: lat, lng: lng }} icon={thrashCan} />
+      <Marker
+        key={i}
+        position={{ lat, lng }}
+        icon={{
+          url: trashCanSvg,
+          scaledSize: scaledSize.current,
+        }}
+      />
     ));
   }, [trashCans]);
 
@@ -59,21 +77,21 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
       return;
     }
   }, []);
-  useEffect(() => {
-    // TODO: 쓰레기 통 지역 별 개수 세기
-    // if (!window.google) return;
-    // const geocoder = new window.google.maps.Geocoder();
-    // geocoder.geocode(
-    //   {
-    //     location: { lat: 36.36, lng: 128.07 },
-    //   },
-    //   (results, status) => {
-    //     if (status === "OK") {
-    //       console.log(results);
-    //     }
-    //   }
-    // );
-  }, [trashCans]);
+  // useEffect(() => {
+  //   // TODO: 쓰레기 통 지역 별 개수 세기
+  //   if (!window.google) return;
+
+  //   const geocoder = new window.google.maps.Geocoder();
+  //   const request = {
+  //     location: { lat: 36.36, lng: 128.07 },
+  //   };
+
+  //   geocoder.geocode(request, (results, status) => {
+  //     if (status === "OK") {
+  //       console.log(results);
+  //     }
+  //   });
+  // }, [trashCans]);
 
   return isLoaded ? (
     <GoogleMap

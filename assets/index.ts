@@ -6,3 +6,4 @@ export { default as RankBlueSvg } from "./navigationBar/rankBlue.svg";
 export { default as StatisticsBlueSvg } from "./navigationBar/statisticsBlue.svg";
 
 export { default as trashCanSvg } from "./main/trashCan.svg";
+export { default as paperWasteSvg } from "./main/paper-waste.png";

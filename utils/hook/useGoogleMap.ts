@@ -49,6 +49,8 @@ const useGoogleMap = (apiKey: string) => {
     };
 
     geocoder.geocode({ location }, (results, status) => {
+      if (!results) return;
+
       if (status === "OK") {
         console.log(results);
       } else {

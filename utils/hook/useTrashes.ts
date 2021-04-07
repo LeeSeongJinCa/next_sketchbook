@@ -8,8 +8,9 @@ import {
   useMainDispatch,
   useMainState,
 } from "@utils/contextAPI/main";
+import { ReqLogin } from "@utils/payloads/request";
 
-const useTrashes = (id: string, password: string) => {
+const useTrashes = (loginData: ReqLogin) => {
   const dispatch = useMainDispatch();
   const { trashes } = useMainState();
 
@@ -26,7 +27,7 @@ const useTrashes = (id: string, password: string) => {
       const { status } = err as Response;
 
       if (status === 401) {
-        const { accessToken } = await fetchLogin(id, password);
+        const { accessToken } = await fetchLogin(loginData);
 
         localStorage.setItem("accessToken", accessToken);
         initTrashes();
