@@ -4,23 +4,22 @@ import bb, { bar } from "billboard.js";
 import "billboard.js/dist/theme/insight.css";
 
 import Statistics from "@components/statistics";
+import { useMainState } from "@utils/contextAPI/main";
+import useMainAreaState from "@utils/hook/useMainAreaState";
 
 interface Props {}
 
 const StatisticsPage: NextPage<Props> = ({}) => {
+  const { trashes, trashCans } = useMainState();
+  const [trashArea, trashCanArea] = useMainAreaState(trashes, trashCans);
+
   const setTrashStatistics = () => {
     bb.generate({
       title: {
         text: "지역별 쓰레기 통계",
       },
       data: {
-        columns: [
-          ["서울특별시", 30],
-          ["부산광역시", 60],
-          ["대구광역시", 90],
-          ["광주광역시", 120],
-          ["대전광역시", 150],
-        ],
+        columns: trashArea,
         type: bar(),
       },
       bar: {
@@ -39,13 +38,7 @@ const StatisticsPage: NextPage<Props> = ({}) => {
         text: "지역별 쓰레기통 통계",
       },
       data: {
-        columns: [
-          ["서울특별시", 150],
-          ["부산광역시", 120],
-          ["대구광역시", 90],
-          ["광주광역시", 60],
-          ["대전광역시", 30],
-        ],
+        columns: trashCanArea,
         type: bar(),
       },
       bar: {
@@ -60,8 +53,10 @@ const StatisticsPage: NextPage<Props> = ({}) => {
 
   useEffect(() => {
     setTrashStatistics();
+  }, [trashArea]);
+  useEffect(() => {
     setTrashCanStatistics();
-  }, []);
+  }, [trashCanArea]);
 
   return <Statistics />;
 };
