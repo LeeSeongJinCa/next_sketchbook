@@ -26,7 +26,6 @@ export const NavigationBarWrap = styled.nav`
     }
     &:hover {
       background-color: rgba(55, 53, 47, 0.08);
-      color: white;
     }
     > img {
       width: 20px;

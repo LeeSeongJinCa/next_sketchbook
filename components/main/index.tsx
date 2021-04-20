@@ -77,21 +77,6 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
       return;
     }
   }, []);
-  // useEffect(() => {
-  //   // TODO: 쓰레기 통 지역 별 개수 세기
-  //   if (!window.google) return;
-
-  //   const geocoder = new window.google.maps.Geocoder();
-  //   const request = {
-  //     location: { lat: 36.36, lng: 128.07 },
-  //   };
-
-  //   geocoder.geocode(request, (results, status) => {
-  //     if (status === "OK") {
-  //       console.log(results);
-  //     }
-  //   });
-  // }, [trashCans]);
 
   return isLoaded ? (
     <GoogleMap
