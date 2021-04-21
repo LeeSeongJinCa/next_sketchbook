@@ -2,16 +2,15 @@ import { useEffect } from "react";
 
 import useTrashes from "./useTrashes";
 import useTrashCans from "./useTrashCans";
+import { ReqLogin } from "@utils/payloads/request";
 
-const useMain = (id: string, password: string) => {
-  const [trashes, initTrashes] = useTrashes({ id, password });
-  const [trashCans, initTrashCans] = useTrashCans({ id, password });
+const useMain = (loginData: ReqLogin) => {
+  const [trashes, initTrashes] = useTrashes(loginData);
+  const [trashCans, initTrashCans] = useTrashCans(loginData);
 
   useEffect(() => {
-    if (false) {
-      initTrashes();
-      initTrashCans();
-    }
+    initTrashes();
+    initTrashCans();
   }, []);
 
   return [trashes, trashCans] as const;

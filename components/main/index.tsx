@@ -2,10 +2,10 @@ import { NextPage } from "next";
 import React, { useEffect, useMemo, useCallback, useRef } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 
-import { trashCanSvg, paperWasteSvg } from "@assets/index";
 import { fetchLogin } from "@utils/api/login";
 import useMain from "@utils/hook/useMain";
 import useGoogleMap from "@utils/hook/useGoogleMap";
+import { IMAGE_BASE_URL } from "@utils/api/client";
 
 const containerStyle = {
   width: "100%",
@@ -28,7 +28,7 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
     onChangeMapCenter,
     onClickGetLocation,
   ] = useGoogleMap(apiKey);
-  const [trashes, trashCans] = useMain(id, password);
+  const [trashes, trashCans] = useMain({ id, password });
   const scaledSize = useRef<google.maps.Size>({
     width: 30,
     height: 30,
@@ -43,13 +43,15 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
     } catch {}
   }, [id, password]);
 
+  console.log(trashes, trashCans);
+
   const displayTrashes = useMemo(() => {
-    return trashes.map(({ latitude: lat, longitude: lng }, i) => (
+    return trashes.map(({ latitude: lat, longitude: lng, photo_url }, i) => (
       <Marker
         key={i}
         position={{ lat, lng }}
         icon={{
-          url: paperWasteSvg,
+          url: `${IMAGE_BASE_URL}/${photo_url}`,
           scaledSize: scaledSize.current,
         }}
       />
@@ -57,12 +59,12 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
   }, [trashes]);
 
   const displayTrashCans = useMemo(() => {
-    return trashCans.map(({ latitude: lat, longitude: lng }, i) => (
+    return trashCans.map(({ latitude: lat, longitude: lng, photo_url }, i) => (
       <Marker
         key={i}
         position={{ lat, lng }}
         icon={{
-          url: trashCanSvg,
+          url: `${IMAGE_BASE_URL}/${photo_url}`,
           scaledSize: scaledSize.current,
         }}
       />
