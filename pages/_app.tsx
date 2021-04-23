@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           name="viewport"
           content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
         />
-        <title>Google Map Search</title>
+        <title>Trash To Trash can</title>
       </Head>
       <Global styles={globalStyle} />
       <MainProvider>
@@ -34,6 +34,22 @@ const App = ({ Component, pageProps }: AppProps) => {
 };
 
 const globalStyle = css`
+  :root {
+    --border-color: #dddddd;
+  }
+  * {
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  html {
+    color: #242424;
+    cursor: default;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
   html,
   body,
   h1,
@@ -61,6 +77,8 @@ const globalStyle = css`
   }
   ol,
   ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
   }
   blockquote,
@@ -80,19 +98,6 @@ const globalStyle = css`
   }
   button {
     cursor: pointer;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-  html {
-    color: #212529;
-    cursor: default;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-size: 16px;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
   }
   a {
     color: #212529;
