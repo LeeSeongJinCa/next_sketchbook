@@ -25,6 +25,8 @@ jobs:
         env:
           GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
           BASE_URL: ${{ secrets.BASE_URL }}
+          ID: ${{ secrets.ID }}
+          PASSWORD: ${{ secrets.PASSWORD }}
       - run: npm run export
       - run: touch ./out/.nojekyll
       - name: Deploy 🚀
