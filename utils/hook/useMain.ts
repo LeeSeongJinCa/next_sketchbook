@@ -9,6 +9,9 @@ const useMain = (loginData: ReqLogin) => {
   const [trashCans, initTrashCans] = useTrashCans(loginData);
 
   useEffect(() => {
+    if (trashes.length && trashCans.length) {
+      return;
+    }
     initTrashes();
     initTrashCans();
   }, []);

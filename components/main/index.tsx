@@ -43,8 +43,6 @@ const Main: NextPage<Props> = ({ apiKey, id, password }) => {
     } catch {}
   }, [id, password]);
 
-  console.log(trashes, trashCans);
-
   const displayTrashes = useMemo(() => {
     return trashes.map(({ latitude: lat, longitude: lng, photo_url }, i) => (
       <Marker
