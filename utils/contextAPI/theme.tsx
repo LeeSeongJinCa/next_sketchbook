@@ -61,3 +61,9 @@ export function useThemeDispatch() {
   if (!dispatch) throw new Error("Cannot find SampleProvider");
   return dispatch;
 }
+
+export function isDarkMode() {
+  const { theme } = useContext(ThemeStateContext);
+
+  return theme === DARK;
+}
