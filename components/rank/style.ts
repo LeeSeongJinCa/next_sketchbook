@@ -15,7 +15,7 @@ export const RankWrap = styled.div`
         margin: 10px 0;
         padding: 10px;
         border: 1px solid var(--border-color);
-        box-shadow: 0 3px 5px #e2e2e2;
+        box-shadow: 0 3px 5px var(--box-shadow);
         border-radius: 8px;
       }
       > h1 {
@@ -30,10 +30,23 @@ export const RankWrap = styled.div`
           border: 0;
           background-color: transparent;
           text-align: left;
+          &:first-of-type {
+            border-radius: 8px 8px 0 0;
+          }
+          &:last-of-type {
+            border-radius: 0 0 8px 8px;
+          }
           &:hover,
           &.active {
-            background-color: #f1f1f1;
+            background-color: var(--hight-background-color);
           }
+        }
+      }
+      > ul {
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
         }
       }
     }
@@ -41,7 +54,7 @@ export const RankWrap = styled.div`
       width: 600px;
       padding: 10px;
       border: 1px solid var(--border-color);
-      box-shadow: 0 3px 5px #e2e2e2;
+      box-shadow: 0 3px 5px var(--box-shadow);
       border-radius: 8px;
       ul {
         li {

@@ -9,7 +9,7 @@ export const NavigationBarWrap = styled.nav`
   width: 100%;
   min-width: 320px;
   height: 40px;
-  background-color: white;
+  background-color: var(--background-color);
   > a {
     display: flex;
     align-items: center;
