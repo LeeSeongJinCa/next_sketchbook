@@ -4,57 +4,52 @@ import { useRouter } from "next/router";
 import { useMemo } from "react";
 
 import {
-  homeSvg,
-  RankSvg,
-  StatisticsSvg,
-  homeBlueSvg,
-  RankBlueSvg,
-  StatisticsBlueSvg,
+  homeBlack,
+  homeWhite,
+  insightsBlack,
+  insightsWhite,
+  starBlack,
+  starWhite,
 } from "@assets/index";
 
 import * as S from "./style";
+import { isDarkMode } from "@utils/contextAPI/theme";
 
 interface Props {}
 
-const pages = [
+const navigationData = [
   {
-    url: "/",
+    href: "/",
     name: "Home",
-    img: homeSvg,
-    selectedImg: homeBlueSvg,
+    white: homeBlack,
+    dark: homeWhite,
   },
   {
-    url: "/statistics",
+    href: "/statistics",
     name: "Statistics",
-    img: RankSvg,
-    selectedImg: RankBlueSvg,
+    white: insightsBlack,
+    dark: insightsWhite,
   },
   {
-    url: "/rank",
+    href: "/rank",
     name: "Rank",
-    img: StatisticsSvg,
-    selectedImg: StatisticsBlueSvg,
+    white: starBlack,
+    dark: starWhite,
   },
 ];
 
 const NavigationBar: NextPage<Props> = ({}) => {
   const { pathname } = useRouter();
+  const darkMode = isDarkMode();
 
   const navigation = useMemo(() => {
     return (
       <S.NavigationBarWrap>
-        {pages.map(({ url, name, img, selectedImg }) => {
-          const firstPath = pathname.split("/")[1];
-          const isCurrent = `/${firstPath}` === url;
-
+        {navigationData.map(({ href, name, white, dark }) => {
           return (
-            <Link href={url} key={name}>
-              <a href={url} className={isCurrent ? "current" : ""}>
-                <img
-                  src={isCurrent ? selectedImg : img}
-                  alt={name}
-                  title={name}
-                />
+            <Link href={href} key={name}>
+              <a href={href}>
+                <img src={darkMode ? dark : white} alt={name} title={name} />
                 <span>{name}</span>
               </a>
             </Link>
@@ -62,7 +57,7 @@ const NavigationBar: NextPage<Props> = ({}) => {
         })}
       </S.NavigationBarWrap>
     );
-  }, [pathname]);
+  }, [pathname, darkMode]);
 
   return navigation;
 };
