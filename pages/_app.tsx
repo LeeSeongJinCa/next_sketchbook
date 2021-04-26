@@ -8,6 +8,7 @@ import MobileLayout from "layouts/MobileLayout";
 
 import { css, Global } from "@emotion/react";
 import { MainProvider } from "@utils/contextAPI/main";
+import { ThemeProvider } from "@utils/contextAPI/theme";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -24,31 +25,33 @@ const App = ({ Component, pageProps }: AppProps) => {
         <title>Trash To Trash can</title>
       </Head>
       <Global styles={globalStyle} />
-      <MainProvider>
-        <MobileLayout>
-          <Component {...pageProps} />
-        </MobileLayout>
-      </MainProvider>
+      <ThemeProvider>
+        <MainProvider>
+          <MobileLayout>
+            <Component {...pageProps} />
+          </MobileLayout>
+        </MainProvider>
+      </ThemeProvider>
     </>
   );
 };
 
 const globalStyle = css`
-  :root {
-    --border-color: #dddddd;
-  }
   * {
     font-size: 16px;
     box-sizing: border-box;
+    color: var(--color);
   }
   html {
-    color: #242424;
     cursor: default;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 16px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background-color: var(--background-color);
   }
   html,
   body,
