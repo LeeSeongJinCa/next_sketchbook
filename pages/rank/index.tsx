@@ -15,7 +15,7 @@ const RankPage: NextPage<Props> = ({ id, password }) => {
   return (
     <>
       <Head>
-        <title>TTT | 쓰레기 및 쓰레기통 순위</title>
+        <title>TTT | Rank</title>
       </Head>
       <Rank trashes={trashes} trashCans={trashCans} />
     </>

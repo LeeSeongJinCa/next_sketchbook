@@ -1,5 +1,5 @@
 import { GetStaticProps } from "next";
-
+import Head from "next/head";
 import Main from "@components/main";
 
 interface Props {
@@ -9,7 +9,14 @@ interface Props {
 }
 
 function HomePage({ apiKey, id, password }: Props) {
-  return <Main apiKey={apiKey} id={id} password={password} />;
+  return (
+    <>
+      <Head>
+        <title>TTT | Home</title>
+      </Head>
+      <Main apiKey={apiKey} id={id} password={password} />
+    </>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async () => {

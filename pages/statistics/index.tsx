@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 import { useEffect } from "react";
 import bb, { bar } from "billboard.js";
 import "billboard.js/dist/theme/insight.css";
@@ -61,7 +62,14 @@ const StatisticsPage: NextPage<Props> = ({ id, password }) => {
     setTrashCanStatistics();
   }, [trashCanArea]);
 
-  return <Statistics />;
+  return (
+    <>
+      <Head>
+        <title>TTT | Statistics</title>
+      </Head>
+      <Statistics />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
