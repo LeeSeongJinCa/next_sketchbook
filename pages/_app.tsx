@@ -9,6 +9,7 @@ import MobileLayout from "layouts/MobileLayout";
 import { css, Global } from "@emotion/react";
 import { MainProvider } from "@utils/contextAPI/main";
 import { ThemeProvider } from "@utils/contextAPI/theme";
+import ThemeLayout from "layouts/ThemeLayout";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -28,7 +29,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ThemeProvider>
         <MainProvider>
           <MobileLayout>
-            <Component {...pageProps} />
+            <ThemeLayout>
+              <Component {...pageProps} />
+            </ThemeLayout>
           </MobileLayout>
         </MainProvider>
       </ThemeProvider>
